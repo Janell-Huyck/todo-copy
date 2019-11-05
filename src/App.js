@@ -55,6 +55,12 @@ class App extends Component {
     console.log(newToDoList);
     this.setState({ todos: newToDoList });
   };
+
+  countTodos = () => {
+    let count = this.state.todos.filter(todo => todo.completed === false)
+      .length;
+    return count;
+  };
   render() {
     return (
       <section className="todoapp">
@@ -76,7 +82,7 @@ class App extends Component {
         />
         <footer className="footer">
           <span className="todo-count">
-            <strong>0</strong> item(s) left
+            <strong>{this.countTodos()}</strong> item(s) left
           </span>
           <button className="clear-completed" onClick={this.deleteAllCompleted}>
             Clear completed
