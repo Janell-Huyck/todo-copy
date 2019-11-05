@@ -4,7 +4,8 @@ import todosList from "./todos.json";
 
 class App extends Component {
   state = {
-    todos: todosList
+    todos: todosList,
+    value: ""
   };
 
   handleCreateToDo = event => {
@@ -47,6 +48,13 @@ class App extends Component {
     this.setState({ todos: newToDoList });
   };
 
+  deleteAllCompleted = event => {
+    const newToDoList = this.state.todos.filter(
+      todo => todo.completed === false
+    );
+    console.log(newToDoList);
+    this.setState({ todos: newToDoList });
+  };
   render() {
     return (
       <section className="todoapp">
@@ -70,7 +78,9 @@ class App extends Component {
           <span className="todo-count">
             <strong>0</strong> item(s) left
           </span>
-          <button className="clear-completed">Clear completed</button>
+          <button className="clear-completed" onClick={this.deleteAllCompleted}>
+            Clear completed
+          </button>
         </footer>
       </section>
     );
