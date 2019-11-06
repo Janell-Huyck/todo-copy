@@ -11,4 +11,4 @@ pages:
       - public
   only:
     - master
- PUBLIC_URL: "/todo-app-part-2" # slash is important
+     PUBLIC_URL: "/todo-app-part-2" # slash is important
