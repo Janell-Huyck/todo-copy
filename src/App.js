@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import todosList from "./todos.json";
 
@@ -61,34 +62,59 @@ class App extends Component {
       .length;
     return count;
   };
+
   render() {
     return (
-      <section className="todoapp">
-        <header className="header">
-          <h1>todos</h1>
-          <input
-            className="new-todo"
-            placeholder="What needs to be done?"
-            autoFocus
-            onKeyDown={this.handleCreateToDo}
-            onChange={this.handleChange}
-            value={this.state.value}
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <section className="todoapp">
+          <header className="header">
+            <h1>todos</h1>
+            <input
+              className="new-todo"
+              placeholder="What needs to be done?"
+              autoFocus
+              onKeyDown={this.handleCreateToDo}
+              onChange={this.handleChange}
+              value={this.state.value}
+            />
+          </header>
+          <TodoList
+            todos={this.state.todos}
+            deleteToDo={this.deleteToDo}
+            handleToggle={this.handleToggle}
           />
-        </header>
-        <TodoList
-          todos={this.state.todos}
-          deleteToDo={this.deleteToDo}
-          handleToggle={this.handleToggle}
-        />
-        <footer className="footer">
+          <footer className="footer">
+            <span className="todo-count">
+              <strong>{this.countTodos()}</strong> item(s) left
+            </span>
+            <ul className="filters">
+              <li>
+                <a href="/">All</a>
+              </li>
+              <li>
+                <a href="/active">Active</a>
+              </li>
+              <li>
+                <a href="/completed">Completed</a>
+              </li>
+            </ul>
+            <button
+              className="clear-completed"
+              onClick={this.deleteAllCompleted}
+            >
+              Clear completed
+            </button>
+          </footer>
+          {/* <footer className="footer">
           <span className="todo-count">
             <strong>{this.countTodos()}</strong> item(s) left
           </span>
           <button className="clear-completed" onClick={this.deleteAllCompleted}>
             Clear completed
           </button>
-        </footer>
-      </section>
+        </footer> */}
+        </section>
+      </BrowserRouter>
     );
   }
 }
