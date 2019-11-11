@@ -13,4 +13,4 @@ pages:
     - master
 
 variables:
-  PUBLIC_URL: "/todo-app-part-2" # slash is important
+  PUBLIC_URL: "/todo-app-part-3" # slash is important
