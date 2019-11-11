@@ -13,7 +13,7 @@ class TodoList extends Component {
               deleteToDo={this.props.deleteToDo}
               id={todo.id}
               key={todo.id}
-              handleToggle={event => this.props.handleToggle(todo.id)}
+              handleToggle={event => this.props.toggleTodo(todo.id)}
             />
           ))}
         </ul>

@@ -4,10 +4,19 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducer from "./reducer";
+
+const store = createStore(reducer);
+
 ReactDOM.render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <App />
+    </BrowserRouter>
+    ,
+  </Provider>,
   document.getElementById("root")
 );
 // If you want your app to work offline and load faster, you can change

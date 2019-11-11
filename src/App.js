@@ -3,8 +3,10 @@ import { Route, NavLink } from "react-router-dom";
 import "./index.css";
 import todosList from "./todos.json";
 import TodoList from "./TodoList";
+import { connect } from "react-redux";
 
 class App extends Component {
+  //my state will be deleted and added to the Redux store
   state = {
     todos: todosList,
     value: ""
@@ -37,17 +39,18 @@ class App extends Component {
   handleToggle = todoIdToToggle => {
     //immutability pattern - not modifying the original object/array
 
-    const newToDoList = this.state.todos.map(todo => {
-      if (todo.id === todoIdToToggle) {
-        const newTodo = { ...todo };
-        //create a copy of the todo to modify
-        newTodo.completed = !newTodo.completed;
-        return newTodo;
-      } else {
-        return todo;
-      }
-    });
-    this.setState({ todos: newToDoList });
+    // const newToDoList = this.state.todos.map(todo => {
+    //   if (todo.id === todoIdToToggle) {
+    //     const newTodo = { ...todo };
+    //     //create a copy of the todo to modify
+    //     newTodo.completed = !newTodo.completed;
+    //     return newTodo;
+    //   } else {
+    //     return todo;
+    //   }
+    // });
+    // this.setState({ todos: newToDoList });
+    this.props.toggleTodo(todoIdToToggle);
   };
 
   deleteAllCompleted = event => {
@@ -139,4 +142,17 @@ class App extends Component {
   }
 }
 
-export default App;
+//mapStateToProps
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
+//mapDispatchToProps
+// const mapDispatchToProps = {
+//   //addTodo
+// }
+export default connect(
+  mapStateToProps,
+  null //will be mapDispatchToProps
+)(App);
