@@ -4,17 +4,35 @@ export const CLEAR_COMPLETED_TODOS = "CLEAR_COMPLETED_TODOS";
 export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 
-//action creator functions
-//an action object always has a type property
-//it may also has a value you're sending to the store ("payload")
-// {
-//   type: TOGGLE_TODO;
-//   payload: "value";
-// }
-
 export const toggleTodo = todoIdToToggle => {
   return {
     type: TOGGLE_TODO,
     payload: todoIdToToggle
+  };
+};
+
+export const addTodo = todoTitle => {
+  const newTodo = {
+    userID: 1,
+    id: Math.floor(Math.random() * 1000000000),
+    title: todoTitle,
+    completed: false
+  };
+  return {
+    type: ADD_TODO,
+    payload: newTodo
+  };
+};
+
+export const deleteTodo = todoIdToDelete => {
+  return {
+    type: DELETE_TODO,
+    payload: todoIdToDelete
+  };
+};
+
+export const clearCompletedTodos = () => {
+  return {
+    type: CLEAR_COMPLETED_TODOS
   };
 };

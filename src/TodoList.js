@@ -10,7 +10,6 @@ class TodoList extends Component {
             <TodoItem
               title={todo.title}
               completed={todo.completed}
-              deleteToDo={this.props.deleteToDo}
               id={todo.id}
               key={todo.id}
             />
