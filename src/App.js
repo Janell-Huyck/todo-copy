@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, NavLink } from "react-router-dom";
 import "./index.css";
-import todosList from "./todos.json";
+// import todosList from "./todos.json";
 import TodoList from "./TodoList";
 import { connect } from "react-redux";
 import { addTodo } from "./actions";
@@ -10,7 +10,6 @@ import { clearCompletedTodos } from "./actions";
 class App extends Component {
   //my state will be deleted and added to the Redux store
   state = {
-    todos: todosList,
     value: ""
   };
 
@@ -25,16 +24,8 @@ class App extends Component {
     this.setState({ value: event.target.value });
   };
 
-  // deleteAllCompleted = event => {
-  //   const newToDoList = this.state.todos.filter(
-  //     todo => todo.completed === false
-  //   );
-  //   console.log(newToDoList);
-  //   this.setState({ todos: newToDoList });
-  // };
-
   countTodos = () => {
-    let count = this.state.todos.filter(todo => todo.completed === false)
+    let count = this.props.todos.filter(todo => todo.completed === false)
       .length;
     return count;
   };
@@ -117,8 +108,6 @@ const mapStateToProps = state => {
 };
 //mapDispatchToProps always an object
 //used to send actions into the store
-// store.dispatch ---- connnect does this.
-//adds "addTodo" as a prop to the component
 //when we call "this.props.addTodo" it will make sure to call store.dispatch(addTodo())
 const mapDispatchToProps = {
   addTodo,

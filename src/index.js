@@ -10,14 +10,12 @@ import reducer from "./reducer";
 
 const store = createStore(reducer);
 
-
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Provider store={store}>
       <App />
-    </BrowserRouter>
-    ,
-  </Provider>,
+    </Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 // If you want your app to work offline and load faster, you can change

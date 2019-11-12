@@ -1,4 +1,3 @@
-//action type constants
 export const TOGGLE_TODO = "TOGGLE_TODO";
 export const CLEAR_COMPLETED_TODOS = "CLEAR_COMPLETED_TODOS";
 export const ADD_TODO = "ADD_TODO";
