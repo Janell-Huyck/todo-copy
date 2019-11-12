@@ -1,10 +1,10 @@
 import todosList from "./todos.json";
 
 import {
-  TOGGLE_TODO,
+  TOGGLE_TODO /*
   CLEAR_COMPLETED_TODOS,
   ADD_TODO,
-  DELETE_TODO
+  DELETE_TODO */
 } from "./actions";
 
 const initialState = {
