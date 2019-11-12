@@ -10,6 +10,7 @@ import reducer from "./reducer";
 
 const store = createStore(reducer);
 
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter basename={process.env.PUBLIC_URL}>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { toggleTodo } from "./actions";
+import { connect } from "react-redux";
 
 class TodoItem extends Component {
   render() {
@@ -32,6 +33,6 @@ const mapDispatchToProps = {
   toggleTodo
 };
 export default connect(
-  null,
-  mapDispatchToProps
+  null, //reading values
+  mapDispatchToProps //send an action to the store
 )(TodoItem);

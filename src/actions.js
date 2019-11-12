@@ -5,11 +5,12 @@ export const ADD_TODO = "ADD_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 
 //action creator functions
-
-{
-  type: TOGGLE_TODO;
-  payload: "value";
-}
+//an action object always has a type property
+//it may also has a value you're sending to the store ("payload")
+// {
+//   type: TOGGLE_TODO;
+//   payload: "value";
+// }
 
 export const toggleTodo = todoIdToToggle => {
   return {

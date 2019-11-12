@@ -36,23 +36,6 @@ class App extends Component {
     this.setState({ value: event.target.value });
   };
 
-  handleToggle = todoIdToToggle => {
-    //immutability pattern - not modifying the original object/array
-
-    // const newToDoList = this.state.todos.map(todo => {
-    //   if (todo.id === todoIdToToggle) {
-    //     const newTodo = { ...todo };
-    //     //create a copy of the todo to modify
-    //     newTodo.completed = !newTodo.completed;
-    //     return newTodo;
-    //   } else {
-    //     return todo;
-    //   }
-    // });
-    // this.setState({ todos: newToDoList });
-    this.props.toggleTodo(todoIdToToggle);
-  };
-
   deleteAllCompleted = event => {
     const newToDoList = this.state.todos.filter(
       todo => todo.completed === false
@@ -85,20 +68,15 @@ class App extends Component {
           exact
           path="/"
           render={() => (
-            <TodoList
-              todos={this.state.todos}
-              deleteToDo={this.deleteToDo}
-              handleToggle={this.handleToggle}
-            />
+            <TodoList todos={this.props.todos} deleteToDo={this.deleteToDo} />
           )}
         />
         <Route
           path="/active"
           render={() => (
             <TodoList
-              todos={this.state.todos.filter(todo => todo.completed === false)}
+              todos={this.props.todos.filter(todo => todo.completed === false)}
               deleteToDo={this.deleteToDo}
-              handleToggle={this.handleToggle}
             />
           )}
         />
@@ -106,9 +84,8 @@ class App extends Component {
           path="/completed"
           render={() => (
             <TodoList
-              todos={this.state.todos.filter(todo => todo.completed === true)}
+              todos={this.props.todos.filter(todo => todo.completed === true)}
               deleteToDo={this.deleteToDo}
-              handleToggle={this.handleToggle}
             />
           )}
         />
@@ -142,15 +119,18 @@ class App extends Component {
   }
 }
 
-//mapStateToProps
+//mapStateToProps -- always a function
+//gets the entire redux state. returns all props
+//we want injected into the app component
 const mapStateToProps = state => {
   return {
     todos: state.todos
   };
 };
-//mapDispatchToProps
+//mapDispatchToProps -- always an object
+//used to send actions into the store
 // const mapDispatchToProps = {
-//   //addTodo
+//   //addTodo -- eventually
 // }
 export default connect(
   mapStateToProps,
