@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, NavLink } from "react-router-dom";
 import "./index.css";
-// import todosList from "./todos.json";
 import TodoList from "./TodoList";
 import { connect } from "react-redux";
 import { addTodo } from "./actions";
@@ -103,7 +102,8 @@ class App extends Component {
 //we want injected into the app component
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    value: ""
   };
 };
 //mapDispatchToProps always an object

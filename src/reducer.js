@@ -8,7 +8,8 @@ import {
 } from "./actions";
 
 const initialState = {
-  todos: todosList
+  todos: todosList,
+  state: ""
 };
 
 const reducer = (state = initialState, action) => {
